@@ -9,26 +9,6 @@
     <div id="root"></div>
     <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
-    <script>
-      const TodoList = () => {
-        return React.createElement('ul', {}, [
-          React.createElement('li', {}, 'Go for a jog'),
-          React.createElement('li', {}, 'Learn React in Udemy'),
-          React.createElement('li', {}, 'Go to the gym'),
-        ]);
-      };
-
-      const App = () => {
-        return React.createElement('div', {}, [
-          React.createElement('h1', {}, 'Todo App'),
-          React.createElement(TodoList),
-        ]);
-      };
-
-      const container = document.getElementById('root');
-      const root = ReactDOM.createRoot(container);
-
-      root.render(React.createElement(App));
-    </script>
+    <script src="./App.js"></script>
   </body>
 </html>
