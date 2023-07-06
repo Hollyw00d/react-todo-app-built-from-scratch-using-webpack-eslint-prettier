@@ -4,6 +4,7 @@
   "description": "- [Introduction to React JS - Bare Bones -- Udemy course](https://www.udemy.com/course/introduction-to-react-js-bare-bones/) - Udemy Instructor: [Harish Krishnan](https://www.udemy.com/user/harish-krishnan-5/)",
   "main": "App.js",
   "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "dev": "vite",
     "preview": "vite preview"
   },
@@ -15,6 +16,9 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "^2.8.8",
     "vite": "^4.3.5"
   }
 }
