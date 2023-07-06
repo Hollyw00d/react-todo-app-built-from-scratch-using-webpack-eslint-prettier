@@ -5,19 +5,27 @@
   "main": "App.js",
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "dev": "vite",
+    "vitebuild": "vite build",
+    "movehtmlindex": "move-file dist/index.html index.html",
+    "build": "run-s vitebuild movehtmlindex",
     "preview": "vite preview"
   },
   "author": "Matt Jennings",
   "license": "ISC",
   "dependencies": {
+    "del": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",
+    "del-cli": "^5.0.0",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
+    "move-file-cli": "^3.0.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.8.8",
     "vite": "^4.3.5"
   }

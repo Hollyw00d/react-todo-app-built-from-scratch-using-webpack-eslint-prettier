@@ -1,26 +1,26 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { createElement } from "react";
+import { createRoot } from "react-dom/client";
 
 const Todo = (props) => {
-  return React.createElement("li", {}, props.name);
+  return createElement("li", {}, props.name);
 };
 
 const TodoList = () => {
-  return React.createElement("ul", {}, [
-    React.createElement(Todo, { name: "Go for a jog" }),
-    React.createElement(Todo, { name: "Learn React" }),
-    React.createElement(Todo, { name: "Breathe" }),
+  return createElement("ul", {}, [
+    createElement(Todo, { name: "Go for a jog" }),
+    createElement(Todo, { name: "Learn React" }),
+    createElement(Todo, { name: "Breathe" }),
   ]);
 };
 
 const App = () => {
-  return React.createElement("div", {}, [
-    React.createElement("h1", {}, "Todo App"),
-    React.createElement(TodoList),
+  return createElement("div", {}, [
+    createElement("h1", {}, "Todo App"),
+    createElement(TodoList),
   ]);
 };
 
 const container = document.getElementById("root");
-const root = ReactDOM.createRoot(container);
+const root = createRoot(container);
 
-root.render(React.createElement(App));
+root.render(createElement(App));
