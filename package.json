@@ -1,32 +1,27 @@
 {
   "name": "introduction-to-react-js-bare-bones",
-  "version": "1.0.0",
-  "description": "- [Introduction to React JS - Bare Bones -- Udemy course](https://www.udemy.com/course/introduction-to-react-js-bare-bones/) - Udemy Instructor: [Harish Krishnan](https://www.udemy.com/user/harish-krishnan-5/)",
-  "main": "App.js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "dev": "vite",
-    "vitebuild": "vite build",
-    "movehtmlindex": "move-file dist/index.html index.html",
-    "build": "run-s vitebuild movehtmlindex",
+    "build": "vite build",
     "preview": "vite preview"
   },
-  "author": "Matt Jennings",
-  "license": "ISC",
   "dependencies": {
-    "del": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.0.0",
-    "del-cli": "^5.0.0",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@vitejs/plugin-react-swc": "^3.3.2",
     "eslint": "^8.44.0",
-    "eslint-config-prettier": "^8.8.0",
-    "move-file-cli": "^3.0.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.8.8",
-    "vite": "^4.3.5"
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.1",
+    "vite": "^4.4.0"
   }
 }
