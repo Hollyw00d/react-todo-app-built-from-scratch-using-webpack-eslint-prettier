@@ -17,10 +17,13 @@ const todoData = [
 
 export const TodoList = () => {
   return (
-    <ul>
-      {todoData.map((todo) => {
-        return <Todo {...todo} key={todo.id} />;
-      })}
-    </ul>
+    <>
+      <h1>Todo App</h1>
+      <ul>
+        {todoData.map((todo) => {
+          return <Todo {...todo} key={todo.id} />;
+        })}
+      </ul>
+    </>
   );
 };
