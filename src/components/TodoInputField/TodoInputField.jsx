@@ -12,6 +12,7 @@ const TodoInputField = (props) => {
   const onInputFieldSubmit = (e) => {
     e.preventDefault();
     onSubmit(newTodo);
+    setNewTodo("");
   };
 
   return (

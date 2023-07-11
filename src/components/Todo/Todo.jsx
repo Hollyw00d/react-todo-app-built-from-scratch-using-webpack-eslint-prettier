@@ -1,7 +1,7 @@
 const Todo = (props) => {
-  const { item, id } = props;
+  const { name, id } = props;
 
-  return <li key={id}>{item}</li>;
+  return <li key={id}>{name}</li>;
 };
 
 export { Todo };
