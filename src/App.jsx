@@ -1,6 +1,9 @@
+import { useState } from "react";
+import { Heading, Page, PageContent } from "grommet";
+import {} from "grommet-icons";
+
 import { TodoList } from "./components/TodoList/TodoList.jsx";
 import { TodoInputField } from "./components/TodoInputField/TodoInputField.jsx";
-import { useState } from "react";
 
 const todosData = [
   {
@@ -31,11 +34,13 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Todo App</h1>
-      <TodoInputField onSubmit={addTodo} />
-      <TodoList todos={todos} />
-    </div>
+    <Page background="background-front" kind="narrow" height="100vh">
+      <PageContent>
+        <Heading>Todo App</Heading>
+        <TodoInputField onSubmit={addTodo} />
+        <TodoList todos={todos} />
+      </PageContent>
+    </Page>
   );
 };
 
