@@ -22,7 +22,8 @@ module.exports = {
   },
   plugins: ["react", "react-refresh", "import", "jsx-a11y"],
   rules: {
-    "react/prop-types": "off",
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": 0,
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },
