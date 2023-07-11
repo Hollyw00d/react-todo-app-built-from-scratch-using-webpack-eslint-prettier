@@ -18,7 +18,6 @@ const todoData = [
 const TodoList = () => {
   return (
     <div>
-      <h1>Todo App</h1>
       <ul>
         {todoData.map((todo) => {
           return <Todo {...todo} key={todo.id} />;
