@@ -1,4 +1,4 @@
-import { Todo } from "./Todo";
+import { Todo } from "../Todo/Todo";
 
 const todoData = [
   {
@@ -15,7 +15,7 @@ const todoData = [
   },
 ];
 
-export const TodoList = () => {
+const TodoList = () => {
   return (
     <div>
       <h1>Todo App</h1>
@@ -27,3 +27,5 @@ export const TodoList = () => {
     </div>
   );
 };
+
+export { TodoList };
