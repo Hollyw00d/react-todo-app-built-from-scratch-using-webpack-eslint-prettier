@@ -8,18 +8,18 @@ import { TodoInputField } from "./components/TodoInputField/TodoInputField.jsx";
 const todosData = [
   {
     name: "Go for jog",
-    completed: false,
     id: 1,
+    completed: false,
   },
   {
     name: "Learn React in Udemy",
-    completed: true,
     id: 2,
+    completed: true,
   },
   {
     name: "Go to Gym",
-    completed: false,
     id: 3,
+    completed: false,
   },
 ];
 
@@ -37,10 +37,24 @@ const App = () => {
       ...todos,
       {
         name: newTodo,
-        completed: false,
         id: todoId,
+        completed: false,
       },
     ]);
+  };
+
+  const toggleCompletion = (todoName) => {
+    setTodos(
+      todos.map((todo) => {
+        let toggleCompleted = !todo.completed;
+
+        if (todo.name === todoName) {
+          return { ...todo, toggleCompleted };
+        }
+
+        return todo;
+      })
+    );
   };
 
   return (
@@ -48,7 +62,7 @@ const App = () => {
       <PageContent>
         <Heading>Todo App</Heading>
         <TodoInputField onSubmit={addTodo} />
-        <TodoList todos={todos} />
+        <TodoList todos={todos} onItemPress={toggleCompletion} />
       </PageContent>
     </Page>
   );
