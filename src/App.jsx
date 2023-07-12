@@ -24,6 +24,10 @@ const App = () => {
   const [todos, setTodos] = useState(todosData);
 
   const addTodo = (newTodo) => {
+    if (newTodo.trim() === "") {
+      return;
+    }
+
     setTodos([
       ...todos,
       {
