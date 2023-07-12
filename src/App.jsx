@@ -8,14 +8,17 @@ import { TodoInputField } from "./components/TodoInputField/TodoInputField.jsx";
 const todosData = [
   {
     name: "Go for jog",
+    completed: false,
     id: 1,
   },
   {
     name: "Learn React in Udemy",
+    completed: true,
     id: 2,
   },
   {
     name: "Go to Gym",
+    completed: false,
     id: 3,
   },
 ];
@@ -28,11 +31,14 @@ const App = () => {
       return;
     }
 
+    const todoId = todos.length + 1;
+
     setTodos([
       ...todos,
       {
         name: newTodo,
-        id: todos.length + 1,
+        completed: false,
+        id: todoId,
       },
     ]);
   };

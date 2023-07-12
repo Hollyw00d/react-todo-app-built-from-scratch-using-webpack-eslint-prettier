@@ -1,9 +1,14 @@
-import { Box, List } from "grommet";
+import { Box } from "grommet";
+import { Todo } from "../Todo/Todo";
 
 const TodoList = ({ todos }) => {
   return (
     <Box margin={{ top: "medium" }}>
-      <List data={todos} pad={{ vertical: "small", horizontal: "small" }} />
+      <ul>
+        {todos.map((todo) => {
+          return <Todo {...todo} key={todo.id} />;
+        })}
+      </ul>
     </Box>
   );
 };
