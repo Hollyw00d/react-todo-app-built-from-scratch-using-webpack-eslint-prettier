@@ -43,13 +43,13 @@ const App = () => {
     ]);
   };
 
-  const toggleCompletion = (todoName) => {
+  const toggleCompletion = (e) => {
+    const todoName = e.target.getAttribute("data-item-name");
+
     setTodos(
       todos.map((todo) => {
-        let toggleCompleted = !todo.completed;
-
         if (todo.name === todoName) {
-          return { ...todo, toggleCompleted };
+          return { ...todo, completed: !todo.completed };
         }
 
         return todo;
@@ -62,7 +62,7 @@ const App = () => {
       <PageContent>
         <Heading>Todo App</Heading>
         <TodoInputField onSubmit={addTodo} />
-        <TodoList todos={todos} onItemPress={toggleCompletion} />
+        <TodoList todos={todos} toggleCompletion={toggleCompletion} />
       </PageContent>
     </Page>
   );

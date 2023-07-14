@@ -1,20 +1,14 @@
-const Todo = ({ name, completed, id }) => {
+const Todo = ({ name, completed, id, toggleCompletion }) => {
   const doneClass = "done";
   const notDoneClass = "not-done";
-
-  const onItemClick = (e) => {
-    const targetClass = e.target.classList.value;
-    if (targetClass === doneClass) {
-      return;
-    }
-  };
 
   return (
     <li key={id} style={{ textDecoration: completed ? "line-through" : null }}>
       {name}
       <button
-        onClick={onItemClick}
+        onClick={toggleCompletion}
         className={completed ? doneClass : notDoneClass}
+        data-item-name={name}
       >
         {completed ? "Mark Not Done" : "Mark Done"}
       </button>
