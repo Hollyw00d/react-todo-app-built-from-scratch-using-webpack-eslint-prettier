@@ -16,7 +16,7 @@ const Todo = ({ name, completed, id, toggleCompletion }) => {
         <button
           onClick={toggleCompletion}
           className={completed ? doneClass : notDoneClass}
-          data-item-name={name}
+          data-item-id={id}
         >
           {completed ? (
             <>

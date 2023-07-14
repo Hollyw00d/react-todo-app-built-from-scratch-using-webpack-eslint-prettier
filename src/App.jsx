@@ -44,11 +44,11 @@ const App = () => {
   };
 
   const toggleCompletion = (e) => {
-    const todoName = e.target.getAttribute("data-item-name");
+    const getTodoID = Number(e.target.getAttribute("data-item-id"));
 
     setTodos(
       todos.map((todo) => {
-        if (todo.name === todoName) {
+        if (todo.id === getTodoID) {
           return { ...todo, completed: !todo.completed };
         }
 
