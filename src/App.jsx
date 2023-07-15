@@ -26,6 +26,7 @@ const todosData = [
 const App = () => {
   const [todos, setTodos] = useState(todosData);
 
+  // Event handlers
   const addTodo = (newTodo) => {
     if (newTodo.trim() === "") {
       return;
@@ -44,7 +45,7 @@ const App = () => {
   };
 
   const toggleCompletion = (e) => {
-    const getTodoID = Number(e.target.getAttribute("data-item-id"));
+    const getTodoID = getItemIdFromParent(e, "li", "data-item-id");
 
     setTodos(
       todos.map((todo) => {
@@ -57,12 +58,27 @@ const App = () => {
     );
   };
 
+  const deleteTodo = (e) => {
+    const getTodoID = getItemIdFromParent(e, "li", "data-item-id");
+
+    setTodos(todos.filter((todo) => todo.id !== getTodoID));
+  };
+
+  // Helper functions
+  const getItemIdFromParent = (event, elem, dataAttr) => {
+    return Number(event.target.closest(elem).getAttribute(dataAttr));
+  };
+
   return (
     <Page background="background-front" kind="narrow" height="100vh">
       <PageContent>
         <Heading>Todo App</Heading>
         <TodoInputField onSubmit={addTodo} />
-        <TodoList todos={todos} toggleCompletion={toggleCompletion} />
+        <TodoList
+          todos={todos}
+          toggleCompletion={toggleCompletion}
+          deleteTodo={deleteTodo}
+        />
       </PageContent>
     </Page>
   );

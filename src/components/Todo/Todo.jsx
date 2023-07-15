@@ -1,12 +1,12 @@
 import { Undo, Checkmark, Edit, Trash } from "grommet-icons";
 import "./todo.css";
 
-const Todo = ({ name, completed, id, toggleCompletion }) => {
+const Todo = ({ name, completed, id, toggleCompletion, deleteTodo }) => {
   const doneClass = "done";
   const notDoneClass = "not-done";
 
   return (
-    <li key={id}>
+    <li key={id} data-item-id={id}>
       <div>
         <span style={{ textDecoration: completed ? "line-through" : null }}>
           {name}
@@ -16,7 +16,6 @@ const Todo = ({ name, completed, id, toggleCompletion }) => {
         <button
           onClick={toggleCompletion}
           className={completed ? doneClass : notDoneClass}
-          data-item-id={id}
         >
           {completed ? (
             <>
@@ -31,7 +30,7 @@ const Todo = ({ name, completed, id, toggleCompletion }) => {
         <button>
           Edit <Edit color="blue" />
         </button>
-        <button>
+        <button onClick={deleteTodo}>
           Delete <Trash color="red" />
         </button>
       </div>
