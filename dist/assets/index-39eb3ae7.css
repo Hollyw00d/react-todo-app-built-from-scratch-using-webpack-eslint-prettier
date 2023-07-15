@@ -1,0 +1,1 @@
+li{display:grid;grid-template-columns:repeat(2,1fr)}li>.btns-container{height:100%;display:grid;grid-template-columns:repeat(3,1fr)}li button{display:flex;align-items:center;justify-content:center}body{margin:0}
