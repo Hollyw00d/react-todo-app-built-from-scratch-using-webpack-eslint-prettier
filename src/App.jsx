@@ -44,12 +44,10 @@ const App = () => {
     ]);
   };
 
-  const toggleCompletion = (e) => {
-    const getTodoID = getItemIdFromParent(e, "li", "data-item-id");
-
+  const toggleCompletion = (todoID) => {
     setTodos(
       todos.map((todo) => {
-        if (todo.id === getTodoID) {
+        if (todo.id === todoID) {
           return { ...todo, completed: !todo.completed };
         }
 
@@ -58,15 +56,8 @@ const App = () => {
     );
   };
 
-  const deleteTodo = (e) => {
-    const getTodoID = getItemIdFromParent(e, "li", "data-item-id");
-
-    setTodos(todos.filter((todo) => todo.id !== getTodoID));
-  };
-
-  // Helper functions
-  const getItemIdFromParent = (event, elem, dataAttr) => {
-    return Number(event.target.closest(elem).getAttribute(dataAttr));
+  const deleteTodo = (todoID) => {
+    setTodos(todos.filter((todo) => todo.id !== todoID));
   };
 
   return (
