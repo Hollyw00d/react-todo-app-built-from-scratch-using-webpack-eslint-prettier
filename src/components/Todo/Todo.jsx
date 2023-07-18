@@ -12,7 +12,6 @@ const Todo = ({
   toggleEditing,
   deleteTodo,
   onInputFieldSubmitReplace,
-  onInputChange,
 }) => {
   return (
     <li key={id}>
@@ -28,7 +27,6 @@ const Todo = ({
               name={name}
               id={id}
               onInputFieldSubmitReplace={onInputFieldSubmitReplace}
-              onInputChange={onInputChange}
             />
           </>
         )}
@@ -49,6 +47,7 @@ const Todo = ({
           )}
         </button>
         <button
+          disabled={editing ? "disabled" : null}
           onClick={() => {
             toggleEditing(id);
           }}

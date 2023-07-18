@@ -76,7 +76,7 @@ const App = () => {
     setTodos(
       todos.map((todo) => {
         if (todo.id === todoID) {
-          return { ...todo, name: name };
+          return { ...todo, name, editing: !todo.editing };
         }
 
         return todo;
