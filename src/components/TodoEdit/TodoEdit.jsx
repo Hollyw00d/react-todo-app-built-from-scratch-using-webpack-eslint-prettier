@@ -14,7 +14,7 @@ const TodoEdit = ({
   return (
     <Form
       onSubmit={(e) => {
-        onInputFieldSubmitReplace(e, replaceTodo, id);
+        onInputFieldSubmitReplace(e, replaceTodo, newTodo, id);
       }}
     >
       <TextInput
