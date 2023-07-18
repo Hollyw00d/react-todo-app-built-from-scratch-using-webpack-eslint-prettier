@@ -7,7 +7,6 @@ const TodoList = ({
   toggleEditing,
   deleteTodo,
   onInputFieldSubmitReplace,
-  replaceTodo,
   onInputChange,
 }) => {
   return (
@@ -22,7 +21,6 @@ const TodoList = ({
               toggleEditing={toggleEditing}
               deleteTodo={deleteTodo}
               onInputFieldSubmitReplace={onInputFieldSubmitReplace}
-              replaceTodo={replaceTodo}
               onInputChange={onInputChange}
             />
           );

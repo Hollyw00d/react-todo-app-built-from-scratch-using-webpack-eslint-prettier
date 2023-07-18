@@ -12,7 +12,6 @@ const Todo = ({
   toggleEditing,
   deleteTodo,
   onInputFieldSubmitReplace,
-  replaceTodo,
   onInputChange,
 }) => {
   return (
@@ -29,7 +28,6 @@ const Todo = ({
               name={name}
               id={id}
               onInputFieldSubmitReplace={onInputFieldSubmitReplace}
-              replaceTodo={replaceTodo}
               onInputChange={onInputChange}
             />
           </>

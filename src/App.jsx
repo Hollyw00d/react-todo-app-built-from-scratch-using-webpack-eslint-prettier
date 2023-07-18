@@ -48,40 +48,10 @@ const App = () => {
     ]);
   };
 
-  const replaceTodo = (todoID, updatedName) => {
-    // console.log(todoID);
-    // console.log(updatedName);
-
-    const getIdx = todos.findIndex((todo) => {
-      if (todo.id === todoID) {
-        return todoID;
-      }
-
-      return undefined;
-    });
-
-    if (Number.isInteger(getIdx)) {
-      const updatedTodo = { ...todos[getIdx], name: updatedName };
-
-      let newTodos = [
-        ...todos.slice(0, getIdx),
-        updatedTodo,
-        ...todos.slice(getIdx + 1),
-      ];
-
-      setTodos(newTodos);
-    }
-  };
-
   const onInputFieldSubmitAdd = (event, addTodo, newTodo, setNewTodo) => {
     event.preventDefault();
     addTodo(newTodo);
     setNewTodo("");
-  };
-
-  const onInputFieldSubmitReplace = (event, replaceTodo, newTodo, todoID) => {
-    event.preventDefault();
-    replaceTodo(todoID, newTodo);
   };
 
   const onInputChange = (setNewTodo, event) => {
@@ -93,6 +63,20 @@ const App = () => {
       todos.map((todo) => {
         if (todo.id === todoID) {
           return { ...todo, completed: !todo.completed };
+        }
+
+        return todo;
+      })
+    );
+  };
+
+  const onInputFieldSubmitReplace = (event, todoID, name) => {
+    event.preventDefault();
+
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === todoID) {
+          return { ...todo, name: name };
         }
 
         return todo;
@@ -131,7 +115,6 @@ const App = () => {
           toggleEditing={toggleEditing}
           deleteTodo={deleteTodo}
           onInputFieldSubmitReplace={onInputFieldSubmitReplace}
-          replaceTodo={replaceTodo}
           onInputChange={onInputChange}
         />
       </PageContent>
