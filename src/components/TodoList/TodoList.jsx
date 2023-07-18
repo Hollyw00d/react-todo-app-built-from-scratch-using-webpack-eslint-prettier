@@ -1,7 +1,7 @@
 import { Box } from "grommet";
 import { Todo } from "../Todo/Todo";
 
-const TodoList = ({ todos, toggleCompletion, deleteTodo }) => {
+const TodoList = ({ todos, toggleCompletion, toggleEditing, deleteTodo }) => {
   return (
     <Box margin={{ top: "medium" }}>
       <ul>
@@ -11,6 +11,7 @@ const TodoList = ({ todos, toggleCompletion, deleteTodo }) => {
               {...todo}
               key={todo.id}
               toggleCompletion={toggleCompletion}
+              toggleEditing={toggleEditing}
               deleteTodo={deleteTodo}
             />
           );

@@ -10,16 +10,19 @@ const todosData = [
     name: "Go for jog",
     id: 1,
     completed: false,
+    editing: false,
   },
   {
     name: "Learn React in Udemy",
     id: 2,
     completed: true,
+    editing: false,
   },
   {
     name: "Go to Gym",
     id: 3,
     completed: false,
+    editing: false,
   },
 ];
 
@@ -40,6 +43,7 @@ const App = () => {
         name: newTodo,
         id: todoId,
         completed: false,
+        editing: false,
       },
     ]);
   };
@@ -49,6 +53,18 @@ const App = () => {
       todos.map((todo) => {
         if (todo.id === todoID) {
           return { ...todo, completed: !todo.completed };
+        }
+
+        return todo;
+      })
+    );
+  };
+
+  const toggleEditing = (todoID) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === todoID) {
+          return { ...todo, editing: !todo.editing };
         }
 
         return todo;
@@ -68,6 +84,7 @@ const App = () => {
         <TodoList
           todos={todos}
           toggleCompletion={toggleCompletion}
+          toggleEditing={toggleEditing}
           deleteTodo={deleteTodo}
         />
       </PageContent>

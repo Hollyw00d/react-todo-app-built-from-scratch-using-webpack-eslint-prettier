@@ -1,26 +1,34 @@
 // import { useState } from "react";
 import { Undo, Checkmark, Edit, Trash } from "grommet-icons";
+import { TodoEdit } from "../TodoEdit/TodoEdit";
 import "./todo.css";
 
-const Todo = ({ name, completed, id, toggleCompletion, deleteTodo }) => {
-  const doneClass = "done";
-  const notDoneClass = "not-done";
-
-  // const [editItem, setEditItem] = useState();
-
-  // const onTodoEdit = (todoID) => {};
-
+const Todo = ({
+  name,
+  completed,
+  editing,
+  id,
+  toggleCompletion,
+  toggleEditing,
+  deleteTodo,
+}) => {
   return (
     <li key={id}>
       <div>
-        <span style={{ textDecoration: completed ? "line-through" : null }}>
-          {name}
-        </span>
+        {!editing ? (
+          <span style={{ textDecoration: completed ? "line-through" : null }}>
+            {name}
+          </span>
+        ) : (
+          <>
+            <TodoEdit />
+          </>
+        )}
       </div>
       <div className="btns-container">
         <button
+          disabled={editing ? "disabled" : null}
           onClick={() => toggleCompletion(id)}
-          className={completed ? doneClass : notDoneClass}
         >
           {completed ? (
             <>
@@ -34,12 +42,15 @@ const Todo = ({ name, completed, id, toggleCompletion, deleteTodo }) => {
         </button>
         <button
           onClick={() => {
-            // onTodoEdit(id);
+            toggleEditing(id);
           }}
         >
           Edit <Edit color="blue" />
         </button>
-        <button onClick={() => deleteTodo(id)}>
+        <button
+          disabled={editing ? "disabled" : null}
+          onClick={() => deleteTodo(id)}
+        >
           Delete <Trash color="red" />
         </button>
       </div>
