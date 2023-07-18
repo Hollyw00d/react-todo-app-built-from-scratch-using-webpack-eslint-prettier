@@ -6,8 +6,8 @@ const TodoList = ({
   toggleCompletion,
   toggleEditing,
   deleteTodo,
-  onInputFieldSubmit,
-  addTodo,
+  onInputFieldSubmitReplace,
+  replaceTodo,
   onInputChange,
 }) => {
   return (
@@ -21,8 +21,8 @@ const TodoList = ({
               toggleCompletion={toggleCompletion}
               toggleEditing={toggleEditing}
               deleteTodo={deleteTodo}
-              onInputFieldSubmit={onInputFieldSubmit}
-              addTodo={addTodo}
+              onInputFieldSubmitReplace={onInputFieldSubmitReplace}
+              replaceTodo={replaceTodo}
               onInputChange={onInputChange}
             />
           );

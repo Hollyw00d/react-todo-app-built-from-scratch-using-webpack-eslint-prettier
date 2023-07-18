@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Form, Heading, TextInput, Box } from "grommet";
 
-const TodoInputField = ({ onInputFieldSubmit, addTodo, onInputChange }) => {
+const TodoInputField = ({ onInputFieldSubmitAdd, addTodo, onInputChange }) => {
   const [newTodo, setNewTodo] = useState("");
 
   return (
     <Form
       onSubmit={(e) => {
-        onInputFieldSubmit(e, addTodo, newTodo, setNewTodo);
+        onInputFieldSubmitAdd(e, addTodo, newTodo, setNewTodo);
       }}
     >
       <Heading level="2">

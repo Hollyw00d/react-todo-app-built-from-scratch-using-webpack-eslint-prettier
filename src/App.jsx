@@ -48,10 +48,28 @@ const App = () => {
     ]);
   };
 
-  const onInputFieldSubmit = (event, addTodo, newTodo, setNewTodo) => {
+  const replaceTodo = (todoID) => {
+    const getIdx = todos.findIndex((todo) => {
+      if (todo.id === todoID) {
+        return todoID;
+      }
+
+      return undefined;
+    });
+
+    console.log(getIdx);
+    return getIdx;
+  };
+
+  const onInputFieldSubmitAdd = (event, addTodo, newTodo, setNewTodo) => {
     event.preventDefault();
     addTodo(newTodo);
     setNewTodo("");
+  };
+
+  const onInputFieldSubmitReplace = (event, replaceTodo, todoID) => {
+    event.preventDefault();
+    replaceTodo(todoID);
   };
 
   const onInputChange = (setNewTodo, event) => {
@@ -91,7 +109,7 @@ const App = () => {
       <PageContent>
         <Heading>Todo App</Heading>
         <TodoInputField
-          onInputFieldSubmit={onInputFieldSubmit}
+          onInputFieldSubmitAdd={onInputFieldSubmitAdd}
           addTodo={addTodo}
           onInputChange={onInputChange}
         />
@@ -100,8 +118,8 @@ const App = () => {
           toggleCompletion={toggleCompletion}
           toggleEditing={toggleEditing}
           deleteTodo={deleteTodo}
-          onInputFieldSubmit={onInputFieldSubmit}
-          addTodo={addTodo}
+          onInputFieldSubmitReplace={onInputFieldSubmitReplace}
+          replaceTodo={replaceTodo}
           onInputChange={onInputChange}
         />
       </PageContent>

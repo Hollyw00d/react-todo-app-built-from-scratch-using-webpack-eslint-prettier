@@ -5,8 +5,8 @@ const TodoEdit = ({
   toggleEditing,
   name,
   id,
-  onInputFieldSubmit,
-  addTodo,
+  onInputFieldSubmitReplace,
+  replaceTodo,
   onInputChange,
 }) => {
   const [newTodo, setNewTodo] = useState(name);
@@ -14,7 +14,7 @@ const TodoEdit = ({
   return (
     <Form
       onSubmit={(e) => {
-        onInputFieldSubmit(e, addTodo, newTodo, setNewTodo);
+        onInputFieldSubmitReplace(e, replaceTodo, id);
       }}
     >
       <TextInput
