@@ -48,6 +48,16 @@ const App = () => {
     ]);
   };
 
+  const onInputFieldSubmit = (event, addTodo, newTodo, setNewTodo) => {
+    event.preventDefault();
+    addTodo(newTodo);
+    setNewTodo("");
+  };
+
+  const onInputChange = (setNewTodo, event) => {
+    setNewTodo(event.target.value);
+  };
+
   const toggleCompletion = (todoID) => {
     setTodos(
       todos.map((todo) => {
@@ -80,12 +90,19 @@ const App = () => {
     <Page background="background-front" kind="narrow" height="100vh">
       <PageContent>
         <Heading>Todo App</Heading>
-        <TodoInputField onSubmit={addTodo} />
+        <TodoInputField
+          onInputFieldSubmit={onInputFieldSubmit}
+          addTodo={addTodo}
+          onInputChange={onInputChange}
+        />
         <TodoList
           todos={todos}
           toggleCompletion={toggleCompletion}
           toggleEditing={toggleEditing}
           deleteTodo={deleteTodo}
+          onInputFieldSubmit={onInputFieldSubmit}
+          addTodo={addTodo}
+          onInputChange={onInputChange}
         />
       </PageContent>
     </Page>

@@ -11,6 +11,9 @@ const Todo = ({
   toggleCompletion,
   toggleEditing,
   deleteTodo,
+  onInputFieldSubmit,
+  addTodo,
+  onInputChange,
 }) => {
   return (
     <li key={id}>
@@ -21,7 +24,14 @@ const Todo = ({
           </span>
         ) : (
           <>
-            <TodoEdit />
+            <TodoEdit
+              toggleEditing={toggleEditing}
+              name={name}
+              id={id}
+              onInputFieldSubmit={onInputFieldSubmit}
+              addTodo={addTodo}
+              onInputChange={onInputChange}
+            />
           </>
         )}
       </div>

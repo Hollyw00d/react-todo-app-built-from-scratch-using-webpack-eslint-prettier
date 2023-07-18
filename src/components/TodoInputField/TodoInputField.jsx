@@ -1,23 +1,15 @@
 import { useState } from "react";
 import { Form, Heading, TextInput, Box } from "grommet";
 
-const TodoInputField = (props) => {
-  const { onSubmit } = props;
-
+const TodoInputField = ({ onInputFieldSubmit, addTodo, onInputChange }) => {
   const [newTodo, setNewTodo] = useState("");
 
-  const onInputChange = (e) => {
-    setNewTodo(e.target.value);
-  };
-
-  const onInputFieldSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(newTodo);
-    setNewTodo("");
-  };
-
   return (
-    <Form onSubmit={onInputFieldSubmit}>
+    <Form
+      onSubmit={(e) => {
+        onInputFieldSubmit(e, addTodo, newTodo, setNewTodo);
+      }}
+    >
       <Heading level="2">
         <label htmlFor="new-todo">What needs to be done</label>
       </Heading>
@@ -26,7 +18,9 @@ const TodoInputField = (props) => {
         name="new-todo"
         type="text"
         value={newTodo}
-        onChange={onInputChange}
+        onChange={(e) => {
+          onInputChange(setNewTodo, e);
+        }}
       />
       <Box margin={{ top: "medium" }}>
         <button type="submit">Add Todo</button>

@@ -1,7 +1,15 @@
 import { Box } from "grommet";
 import { Todo } from "../Todo/Todo";
 
-const TodoList = ({ todos, toggleCompletion, toggleEditing, deleteTodo }) => {
+const TodoList = ({
+  todos,
+  toggleCompletion,
+  toggleEditing,
+  deleteTodo,
+  onInputFieldSubmit,
+  addTodo,
+  onInputChange,
+}) => {
   return (
     <Box margin={{ top: "medium" }}>
       <ul>
@@ -13,6 +21,9 @@ const TodoList = ({ todos, toggleCompletion, toggleEditing, deleteTodo }) => {
               toggleCompletion={toggleCompletion}
               toggleEditing={toggleEditing}
               deleteTodo={deleteTodo}
+              onInputFieldSubmit={onInputFieldSubmit}
+              addTodo={addTodo}
+              onInputChange={onInputChange}
             />
           );
         })}
