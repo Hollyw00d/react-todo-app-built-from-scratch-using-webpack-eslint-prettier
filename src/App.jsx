@@ -30,7 +30,8 @@ const App = () => {
 
   const [todos, setTodos] = useState(todosData);
 
-  const [filter, setFilter] = useState(todoFilters[0]);
+  // const [filter, setFilter] = useState(todoFilters[0]);
+  const [newFilter, setNewFilter] = useState("all");
 
   // Event handlers
   const addTodo = (newTodo) => {
@@ -103,9 +104,9 @@ const App = () => {
     setTodos(todos.filter((todo) => todo.id !== todoID));
   };
 
-  const filterTodos = (filterName) => {
-    setFilter(filterName);
-    return filter;
+  const filterTodos = (filter) => {
+    const getTodoFilter = todoFilters[filter];
+    setNewFilter(getTodoFilter);
   };
 
   return (
@@ -117,9 +118,10 @@ const App = () => {
           addTodo={addTodo}
           onInputChange={onInputChange}
         />
-        <FilterTodo filterTodos={filterTodos} filter={filter} />
+        <FilterTodo filterTodos={filterTodos} />
         <TodoList
           todos={todos}
+          newFilter={newFilter}
           toggleCompletion={toggleCompletion}
           toggleEditing={toggleEditing}
           deleteTodo={deleteTodo}

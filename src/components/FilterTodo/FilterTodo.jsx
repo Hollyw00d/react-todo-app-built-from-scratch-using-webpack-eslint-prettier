@@ -1,22 +1,41 @@
+import { useState, useEffect } from "react";
 import "./filter-todo.css";
 
-const FilterTodo = ({ filterTodos, filter }) => {
-  const handleFilter = (e) => {
-    const filterVal = e.target.getAttribute("data-filter");
-    filterTodos(filterVal);
+const FilterTodo = ({ filterTodos }) => {
+  const [filter, setFilter] = useState("all");
 
-    console.log(filter);
+  const handleFilter = (e) => {
+    const filterVal = Number(e.target.getAttribute("data-filter"));
+    setFilter(filterVal);
+    return filter;
   };
+
+  useEffect(() => {
+    filterTodos(filter);
+    //eslint-disable-next-line
+  }, [filter]);
+
+  // const handleFilter = (e) => {
+  //   const filterVal = e.target.getAttribute("data-filter");
+  //   filterTodos(filterVal);
+
+  //   console.log("FilterTodo.js");
+
+  //   console.log("filterVal");
+  //   console.log(filterVal);
+
+  //   // console.log(filter);
+  // };
 
   return (
     <div className="filter-tabs">
-      <button data-filter="all" onClick={(e) => handleFilter(e)}>
+      <button data-filter="0" onClick={(e) => handleFilter(e)}>
         All
       </button>
-      <button data-filter="active" onClick={(e) => handleFilter(e)}>
+      <button data-filter="1" onClick={(e) => handleFilter(e)}>
         Active
       </button>
-      <button data-filter="completed" onClick={(e) => handleFilter(e)}>
+      <button data-filter="2" onClick={(e) => handleFilter(e)}>
         Completed
       </button>
     </div>

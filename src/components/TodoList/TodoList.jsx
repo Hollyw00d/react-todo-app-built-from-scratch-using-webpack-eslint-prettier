@@ -3,20 +3,33 @@ import { Todo } from "../Todo/Todo";
 
 const TodoList = ({
   todos,
+  newFilter,
   toggleCompletion,
   toggleEditing,
   deleteTodo,
   onInputFieldSubmitReplace,
   onInputChange,
 }) => {
+  const newFilterClean = newFilter?.toLowerCase();
+  let updatedTodos = todos;
+
+  switch (newFilterClean) {
+    case "active":
+      updatedTodos = todos.filter((todo) => todo.completed === false);
+      break;
+    case "completed":
+      updatedTodos = todos.filter((todo) => todo.completed === true);
+      break;
+  }
+
   return (
     <Box margin={{ top: "medium" }}>
       <ul>
-        {todos.map((todo) => {
+        {updatedTodos.map((todo) => {
           return (
             <Todo
-              {...todo}
               key={todo.id}
+              {...todo}
               toggleCompletion={toggleCompletion}
               toggleEditing={toggleEditing}
               deleteTodo={deleteTodo}
