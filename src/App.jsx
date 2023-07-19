@@ -1,33 +1,36 @@
 import { useState } from "react";
 import { Heading, Page, PageContent } from "grommet";
-import {} from "grommet-icons";
-
 import { TodoList } from "./components/TodoList/TodoList.jsx";
 import { TodoInputField } from "./components/TodoInputField/TodoInputField.jsx";
-
-const todosData = [
-  {
-    name: "Go for jog",
-    id: 1,
-    completed: false,
-    editing: false,
-  },
-  {
-    name: "Learn React in Udemy",
-    id: 2,
-    completed: true,
-    editing: false,
-  },
-  {
-    name: "Go to Gym",
-    id: 3,
-    completed: false,
-    editing: false,
-  },
-];
+import { FilterTodo } from "./components/FilterTodo/FilterTodo.jsx";
 
 const App = () => {
+  const todosData = [
+    {
+      name: "Go for jog",
+      id: 1,
+      completed: false,
+      editing: false,
+    },
+    {
+      name: "Learn React in Udemy",
+      id: 2,
+      completed: true,
+      editing: false,
+    },
+    {
+      name: "Go to Gym",
+      id: 3,
+      completed: false,
+      editing: false,
+    },
+  ];
+
+  const todoFilters = { 0: "all", 1: "active", 2: "completed" };
+
   const [todos, setTodos] = useState(todosData);
+
+  const [filter, setFilter] = useState(todoFilters[0]);
 
   // Event handlers
   const addTodo = (newTodo) => {
@@ -100,6 +103,11 @@ const App = () => {
     setTodos(todos.filter((todo) => todo.id !== todoID));
   };
 
+  const filterTodos = (filterName) => {
+    setFilter(filterName);
+    return filter;
+  };
+
   return (
     <Page background="background-front" kind="narrow" height="100vh">
       <PageContent>
@@ -109,6 +117,7 @@ const App = () => {
           addTodo={addTodo}
           onInputChange={onInputChange}
         />
+        <FilterTodo filterTodos={filterTodos} filter={filter} />
         <TodoList
           todos={todos}
           toggleCompletion={toggleCompletion}
