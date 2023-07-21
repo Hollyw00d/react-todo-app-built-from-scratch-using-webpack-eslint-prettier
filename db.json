@@ -11,6 +11,12 @@
       "completed": false,
       "editing": false,
       "id": 5
+    },
+    {
+      "name": "Play pickleball",
+      "completed": true,
+      "editing": false,
+      "id": 6
     }
   ]
 }
