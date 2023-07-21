@@ -15,18 +15,6 @@ const FilterTodo = ({ filterTodos }) => {
     //eslint-disable-next-line
   }, [filter]);
 
-  // const handleFilter = (e) => {
-  //   const filterVal = e.target.getAttribute("data-filter");
-  //   filterTodos(filterVal);
-
-  //   console.log("FilterTodo.js");
-
-  //   console.log("filterVal");
-  //   console.log(filterVal);
-
-  //   // console.log(filter);
-  // };
-
   return (
     <div className="filter-tabs">
       <button data-filter="0" onClick={(e) => handleFilter(e)}>
