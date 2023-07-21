@@ -2,7 +2,7 @@
   "todos": [
     {
       "name": "Take test",
-      "completed": true,
+      "completed": false,
       "editing": false,
       "id": 4
     },
