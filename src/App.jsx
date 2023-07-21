@@ -10,12 +10,19 @@ const App = () => {
 
   const todoFilters = { 0: "all", 1: "active", 2: "completed" };
   const [newFilter, setNewFilter] = useState("all");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const baseURL = "http://localhost:3000/todos";
 
   const fetchTodos = async () => {
-    const { data } = await axios.get(baseURL);
-    setTodos(data);
+    try {
+      const { data } = await axios.get(baseURL);
+      setTodos(data);
+      setLoading(false);
+    } catch (e) {
+      setError(e);
+    }
   };
 
   useEffect(() => {
@@ -109,6 +116,8 @@ const App = () => {
         />
         <FilterTodo filterTodos={filterTodos} />
         <TodoList
+          loading={loading}
+          error={error}
           todos={todos}
           newFilter={newFilter}
           toggleCompletion={toggleCompletion}
