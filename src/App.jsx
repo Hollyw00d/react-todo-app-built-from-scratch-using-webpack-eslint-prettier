@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Heading, Page, PageContent } from "grommet";
+import { Alert } from "@mui/material";
 import { TodoList } from "./components/TodoList/TodoList.jsx";
 import { TodoInputField } from "./components/TodoInputField/TodoInputField.jsx";
 import { FilterTodo } from "./components/FilterTodo/FilterTodo.jsx";
@@ -12,6 +13,7 @@ const App = () => {
   const [newFilter, setNewFilter] = useState("all");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showNotifications, setShowNofication] = useState(false);
 
   const baseURL = "http://localhost:3000/todos";
 
@@ -30,22 +32,22 @@ const App = () => {
   }, []);
 
   // Event handlers
-  const addTodo = (newTodo) => {
+  const addTodo = async (newTodo) => {
     if (newTodo.trim() === "") {
       return;
     }
 
-    const todoId = todos.length + 1;
-
-    setTodos([
-      ...todos,
-      {
+    try {
+      const { data } = await axios.post(baseURL, {
         name: newTodo,
-        id: todoId,
         completed: false,
         editing: false,
-      },
-    ]);
+      });
+
+      setTodos([...todos, data]);
+    } catch (e) {
+      setShowNofication(true);
+    }
   };
 
   const onInputFieldSubmitAdd = (event, addTodo, newTodo, setNewTodo) => {
@@ -58,16 +60,25 @@ const App = () => {
     setNewTodo(event.target.value);
   };
 
-  const toggleCompletion = (todoID) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === todoID) {
-          return { ...todo, completed: !todo.completed };
-        }
+  const toggleCompletion = async (todoID) => {
+    try {
+      const todo = todos.filter((todo) => todo.id === todoID);
 
-        return todo;
-      })
-    );
+      let { data } = await axios.patch(`${baseURL}/${todoID}`, {
+        completed: !todo[0].completed,
+      });
+
+      setTodos(
+        todos.map((todo) => {
+          if (todo.id === todoID) {
+            return data;
+          }
+          return todo;
+        })
+      );
+    } catch (e) {
+      setShowNofication(e);
+    }
   };
 
   const onInputFieldSubmitReplace = (event, todoID, name) => {
@@ -109,6 +120,7 @@ const App = () => {
     <Page background="background-front" kind="narrow" height="100vh">
       <PageContent>
         <Heading>Todo App</Heading>
+        {showNotifications ? <Alert severity="warning">Warning!</Alert> : null}
         <TodoInputField
           onInputFieldSubmitAdd={onInputFieldSubmitAdd}
           addTodo={addTodo}

@@ -3,20 +3,26 @@
     {
       "name": "Go for jog",
       "id": 1,
-      "completed": false,
+      "completed": true,
       "editing": false
     },
     {
       "name": "Learn React in Udemy",
       "id": 2,
-      "completed": true,
+      "completed": false,
       "editing": false
     },
     {
       "name": "Go to Gym",
       "id": 3,
-      "completed": false,
+      "completed": true,
       "editing": false
+    },
+    {
+      "name": "Take test",
+      "completed": true,
+      "editing": false,
+      "id": 4
     }
   ]
 }
