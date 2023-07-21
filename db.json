@@ -1,28 +1,16 @@
 {
   "todos": [
     {
-      "name": "Go for jog",
-      "id": 1,
-      "completed": true,
-      "editing": false
-    },
-    {
-      "name": "Learn React in Udemy",
-      "id": 2,
-      "completed": false,
-      "editing": false
-    },
-    {
-      "name": "Go to Gym",
-      "id": 3,
-      "completed": true,
-      "editing": false
-    },
-    {
       "name": "Take test",
       "completed": true,
       "editing": false,
       "id": 4
+    },
+    {
+      "name": "Go home!!!",
+      "completed": false,
+      "editing": false,
+      "id": 5
     }
   ]
 }

@@ -61,9 +61,9 @@ const App = () => {
   };
 
   const toggleCompletion = async (todoID) => {
-    try {
-      const todo = todos.filter((todo) => todo.id === todoID);
+    const todo = todos.filter((todo) => todo.id === todoID);
 
+    try {
       let { data } = await axios.patch(`${baseURL}/${todoID}`, {
         completed: !todo[0].completed,
       });
@@ -81,34 +81,58 @@ const App = () => {
     }
   };
 
-  const onInputFieldSubmitReplace = (event, todoID, name) => {
+  const onInputFieldSubmitReplace = async (event, todoID, name) => {
     event.preventDefault();
 
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === todoID) {
-          return { ...todo, name, editing: !todo.editing };
-        }
+    try {
+      const todo = todos.filter((todo) => todo.id === todoID);
 
-        return todo;
-      })
-    );
+      let { data } = await axios.patch(`${baseURL}/${todoID}`, {
+        name,
+        editing: !todo[0].editing,
+      });
+
+      setTodos(
+        todos.map((todo) => {
+          if (todo.id === todoID) {
+            return data;
+          }
+          return todo;
+        })
+      );
+    } catch (e) {
+      showNotifications(e);
+    }
   };
 
-  const toggleEditing = (todoID) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === todoID) {
-          return { ...todo, editing: !todo.editing };
-        }
+  const toggleEditing = async (todoID) => {
+    const todo = todos.filter((todo) => todo.id === todoID);
 
-        return todo;
-      })
-    );
+    try {
+      let { data } = await axios.patch(`${baseURL}/${todoID}`, {
+        editing: !todo[0].editing,
+      });
+
+      setTodos(
+        todos.map((todo) => {
+          if (todo.id === todoID) {
+            return data;
+          }
+          return todo;
+        })
+      );
+    } catch (e) {
+      setShowNofication(e);
+    }
   };
 
-  const deleteTodo = (todoID) => {
-    setTodos(todos.filter((todo) => todo.id !== todoID));
+  const deleteTodo = async (todoID) => {
+    try {
+      await axios.delete(`${baseURL}/${todoID}`);
+      setTodos(todos.filter((todo) => todo.id !== todoID));
+    } catch (e) {
+      setShowNofication(e);
+    }
   };
 
   const filterTodos = (filter) => {

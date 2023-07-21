@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { Undo, Checkmark, Edit, Trash } from "grommet-icons";
 import { TodoEdit } from "../TodoEdit/TodoEdit";
 import "./todo.css";
@@ -13,6 +13,8 @@ const Todo = ({
   deleteTodo,
   onInputFieldSubmitReplace,
 }) => {
+  const [todoKey, setTodoKey] = useState(1);
+
   return (
     <li key={id}>
       <div>
@@ -50,6 +52,7 @@ const Todo = ({
           disabled={editing ? "disabled" : null}
           onClick={() => {
             toggleEditing(id);
+            setTodoKey((key) => key + todoKey);
           }}
         >
           Edit <Edit color="blue" />
