@@ -1,37 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Heading, Page, PageContent } from "grommet";
 import { TodoList } from "./components/TodoList/TodoList.jsx";
 import { TodoInputField } from "./components/TodoInputField/TodoInputField.jsx";
 import { FilterTodo } from "./components/FilterTodo/FilterTodo.jsx";
+import axios from "axios";
 
 const App = () => {
-  const todosData = [
-    {
-      name: "Go for jog",
-      id: 1,
-      completed: false,
-      editing: false,
-    },
-    {
-      name: "Learn React in Udemy",
-      id: 2,
-      completed: true,
-      editing: false,
-    },
-    {
-      name: "Go to Gym",
-      id: 3,
-      completed: false,
-      editing: false,
-    },
-  ];
+  const [todos, setTodos] = useState([]);
 
   const todoFilters = { 0: "all", 1: "active", 2: "completed" };
-
-  const [todos, setTodos] = useState(todosData);
-
-  // const [filter, setFilter] = useState(todoFilters[0]);
   const [newFilter, setNewFilter] = useState("all");
+
+  const baseURL = "http://localhost:3000/todos";
+
+  const fetchTodos = async () => {
+    const { data } = await axios.get(baseURL);
+    setTodos(data);
+  };
+
+  useEffect(() => {
+    fetchTodos();
+  }, []);
 
   // Event handlers
   const addTodo = (newTodo) => {
