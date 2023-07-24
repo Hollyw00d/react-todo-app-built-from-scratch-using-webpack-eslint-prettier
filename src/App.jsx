@@ -1,36 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Heading, Page, PageContent } from "grommet";
 import { Alert } from "@mui/material";
 import { TodoList } from "./components/TodoList/TodoList.jsx";
 import { TodoInputField } from "./components/TodoInputField/TodoInputField.jsx";
 import { FilterTodo } from "./components/FilterTodo/FilterTodo.jsx";
 import { TodoApi } from "./utils/todoApi/todoApi.jsx";
+import { useFetchTodoList } from "./hooks/useFetchTodoList.jsx";
 
 const App = () => {
-  const [todos, setTodos] = useState([]);
-
+  const { setTodos, todos, loading, error } = useFetchTodoList();
   const todoFilters = { 0: "all", 1: "active", 2: "completed" };
   const [newFilter, setNewFilter] = useState("all");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [showNotifications, setShowNofication] = useState(false);
-
-  const fetchTodos = async () => {
-    try {
-      const { data } = await TodoApi.fetchTodos();
-
-      setTodos(data);
-      setLoading(false);
-    } catch (e) {
-      console.log("inside error!!!");
-
-      setError(e);
-    }
-  };
-
-  useEffect(() => {
-    fetchTodos();
-  }, []);
 
   // Event handlers
   const addTodo = async (newTodo) => {

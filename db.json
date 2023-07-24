@@ -1,12 +1,6 @@
 {
   "todos": [
     {
-      "name": "Go home!!!",
-      "completed": true,
-      "editing": false,
-      "id": 5
-    },
-    {
       "name": "Play pickleball",
       "completed": true,
       "editing": false,
@@ -20,9 +14,15 @@
     },
     {
       "name": "Take test",
-      "completed": false,
+      "completed": true,
       "editing": false,
       "id": 8
+    },
+    {
+      "name": "Go to Hollywood",
+      "completed": false,
+      "editing": false,
+      "id": 9
     }
   ]
 }
