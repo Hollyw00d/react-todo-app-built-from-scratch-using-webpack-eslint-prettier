@@ -1,12 +1,6 @@
 {
   "todos": [
     {
-      "name": "Take test",
-      "completed": false,
-      "editing": false,
-      "id": 4
-    },
-    {
       "name": "Go home!!!",
       "completed": false,
       "editing": false,
@@ -17,6 +11,12 @@
       "completed": true,
       "editing": false,
       "id": 6
+    },
+    {
+      "name": "Pick up item at store",
+      "completed": false,
+      "editing": false,
+      "id": 7
     }
   ]
 }

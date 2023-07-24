@@ -4,7 +4,7 @@ import { Alert } from "@mui/material";
 import { TodoList } from "./components/TodoList/TodoList.jsx";
 import { TodoInputField } from "./components/TodoInputField/TodoInputField.jsx";
 import { FilterTodo } from "./components/FilterTodo/FilterTodo.jsx";
-import axios from "axios";
+import { TodoApi } from "./utils/todoApi/todoApi.jsx";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
@@ -15,14 +15,15 @@ const App = () => {
   const [error, setError] = useState(null);
   const [showNotifications, setShowNofication] = useState(false);
 
-  const baseURL = "http://localhost:3000/todos";
-
   const fetchTodos = async () => {
     try {
-      const { data } = await axios.get(baseURL);
+      const { data } = await TodoApi.fetchTodos();
+
       setTodos(data);
       setLoading(false);
     } catch (e) {
+      console.log("inside error!!!");
+
       setError(e);
     }
   };
@@ -38,11 +39,7 @@ const App = () => {
     }
 
     try {
-      const { data } = await axios.post(baseURL, {
-        name: newTodo,
-        completed: false,
-        editing: false,
-      });
+      const { data } = await TodoApi.postTodo(newTodo);
 
       setTodos([...todos, data]);
     } catch (e) {
@@ -64,9 +61,7 @@ const App = () => {
     const todo = todos.filter((todo) => todo.id === todoID);
 
     try {
-      let { data } = await axios.patch(`${baseURL}/${todoID}`, {
-        completed: !todo[0].completed,
-      });
+      const { data } = await TodoApi.toggleCompletionStatus(todoID, todo);
 
       setTodos(
         todos.map((todo) => {
@@ -87,10 +82,7 @@ const App = () => {
     try {
       const todo = todos.filter((todo) => todo.id === todoID);
 
-      let { data } = await axios.patch(`${baseURL}/${todoID}`, {
-        name,
-        editing: !todo[0].editing,
-      });
+      let { data } = await TodoApi.editName(todoID, todo, name);
 
       setTodos(
         todos.map((todo) => {
@@ -109,9 +101,7 @@ const App = () => {
     const todo = todos.filter((todo) => todo.id === todoID);
 
     try {
-      let { data } = await axios.patch(`${baseURL}/${todoID}`, {
-        editing: !todo[0].editing,
-      });
+      let { data } = await TodoApi.toggleEditingStatus(todoID, todo);
 
       setTodos(
         todos.map((todo) => {
@@ -128,7 +118,8 @@ const App = () => {
 
   const deleteTodo = async (todoID) => {
     try {
-      await axios.delete(`${baseURL}/${todoID}`);
+      await TodoApi.deleteTodo(todoID);
+
       setTodos(todos.filter((todo) => todo.id !== todoID));
     } catch (e) {
       setShowNofication(e);

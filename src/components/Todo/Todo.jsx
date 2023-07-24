@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Undo, Checkmark, Edit, Trash } from "grommet-icons";
 import { TodoEdit } from "../TodoEdit/TodoEdit";
-import "./todo.css";
+import "./Todo.css";
 
 const Todo = ({
   name,

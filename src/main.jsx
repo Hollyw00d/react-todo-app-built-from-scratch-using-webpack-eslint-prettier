@@ -4,7 +4,7 @@ import { Grommet } from "grommet";
 import { hacktoberfest2022 } from "grommet/themes";
 
 import { App } from "./App";
-import "./index.css";
+import "./App.css";
 
 const container = document.getElementById("root");
 const root = createRoot(container);

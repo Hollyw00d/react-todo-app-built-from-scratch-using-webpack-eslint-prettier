@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./filter-todo.css";
+import "./FilterTodo.css";
 
 const FilterTodo = ({ filterTodos }) => {
   const [filter, setFilter] = useState("all");
