@@ -23,6 +23,24 @@
       "completed": false,
       "editing": false,
       "id": 9
+    },
+    {
+      "name": "Go to California",
+      "completed": true,
+      "editing": false,
+      "id": 10
+    },
+    {
+      "name": "Go to Portland, OR",
+      "completed": true,
+      "editing": false,
+      "id": 11
+    },
+    {
+      "name": "Eat a bagle",
+      "completed": true,
+      "editing": false,
+      "id": 13
     }
   ]
 }

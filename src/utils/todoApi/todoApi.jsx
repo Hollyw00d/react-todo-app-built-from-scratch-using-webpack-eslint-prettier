@@ -9,7 +9,7 @@ class TodoApi {
 
   static async postTodo(todo) {
     return axios.post(baseURL, {
-      name: todo,
+      name: todo.trim(),
       completed: false,
       editing: false,
     });

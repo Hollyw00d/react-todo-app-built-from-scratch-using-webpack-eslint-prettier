@@ -9,16 +9,12 @@ import { useFetchTodoList } from "./hooks/useFetchTodoList.jsx";
 
 const App = () => {
   const { setTodos, todos, loading, error } = useFetchTodoList();
-  const todoFilters = { 0: "all", 1: "active", 2: "completed" };
   const [newFilter, setNewFilter] = useState("all");
   const [showNotifications, setShowNofication] = useState(false);
+  const todoFilters = { 0: "all", 1: "active", 2: "completed" };
 
   // Event handlers
   const addTodo = async (newTodo) => {
-    if (newTodo.trim() === "") {
-      return;
-    }
-
     try {
       const { data } = await TodoApi.postTodo(newTodo);
 

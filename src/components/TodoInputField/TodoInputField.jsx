@@ -23,7 +23,14 @@ const TodoInputField = ({ onInputFieldSubmitAdd, addTodo, onInputChange }) => {
         }}
       />
       <Box margin={{ top: "medium" }}>
-        <button type="submit">Add Todo</button>
+        <button
+          disabled={
+            newTodo.length === 0 || newTodo.trim() === "" ? "disabled" : null
+          }
+          type="submit"
+        >
+          Add Todo
+        </button>
       </Box>
     </Form>
   );
