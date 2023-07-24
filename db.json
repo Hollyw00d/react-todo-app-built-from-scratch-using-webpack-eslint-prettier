@@ -2,7 +2,7 @@
   "todos": [
     {
       "name": "Go home!!!",
-      "completed": false,
+      "completed": true,
       "editing": false,
       "id": 5
     },
@@ -17,6 +17,12 @@
       "completed": false,
       "editing": false,
       "id": 7
+    },
+    {
+      "name": "Take test",
+      "completed": false,
+      "editing": false,
+      "id": 8
     }
   ]
 }
