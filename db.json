@@ -2,7 +2,7 @@
   "todos": [
     {
       "name": "Play pickleball",
-      "completed": true,
+      "completed": false,
       "editing": false,
       "id": 6
     },
