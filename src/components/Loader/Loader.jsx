@@ -1,7 +1,8 @@
+import React from "react";
 import { Box } from "grommet";
 import { Circles } from "react-loading-icons";
 
-const Loader = () => {
+export default function Loader() {
   return (
     <Box
       align="center"
@@ -14,6 +15,4 @@ const Loader = () => {
       <h1>Loading...</h1>
     </Box>
   );
-};
-
-export { Loader };
+}

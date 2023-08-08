@@ -1,13 +1,13 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Heading, Page, PageContent } from "grommet";
 import { Alert } from "@mui/material";
-import { TodoList } from "./components/TodoList/TodoList.jsx";
-import { TodoInputField } from "./components/TodoInputField/TodoInputField.jsx";
-import { FilterTodo } from "./components/FilterTodo/FilterTodo.jsx";
-import { TodoApi } from "./utils/todoApi/todoApi.jsx";
-import { useFetchTodoList } from "./hooks/useFetchTodoList.jsx";
+import TodoList from "./components/TodoList/TodoList";
+import TodoInputField from "./components/TodoInputField/TodoInputField";
+import FilterTodo from "./components/FilterTodo/FilterTodo";
+import TodoApi from "./utils/todoApi/todoApi";
+import useFetchTodoList from "./hooks/useFetchTodoList";
 
-const App = () => {
+export default function App() {
   const { setTodos, todos, loading, error } = useFetchTodoList();
   const [newFilter, setNewFilter] = useState("all");
   const [showNotifications, setShowNofication] = useState(false);
@@ -46,7 +46,7 @@ const App = () => {
             return data;
           }
           return todo;
-        })
+        }),
       );
     } catch (e) {
       setShowNofication(e);
@@ -59,7 +59,7 @@ const App = () => {
     try {
       const todo = todos.filter((todo) => todo.id === todoID);
 
-      let { data } = await TodoApi.editName(todoID, todo, name);
+      const { data } = await TodoApi.editName(todoID, todo, name);
 
       setTodos(
         todos.map((todo) => {
@@ -67,7 +67,7 @@ const App = () => {
             return data;
           }
           return todo;
-        })
+        }),
       );
     } catch (e) {
       showNotifications(e);
@@ -78,7 +78,7 @@ const App = () => {
     const todo = todos.filter((todo) => todo.id === todoID);
 
     try {
-      let { data } = await TodoApi.toggleEditingStatus(todoID, todo);
+      const { data } = await TodoApi.toggleEditingStatus(todoID, todo);
 
       setTodos(
         todos.map((todo) => {
@@ -86,7 +86,7 @@ const App = () => {
             return data;
           }
           return todo;
-        })
+        }),
       );
     } catch (e) {
       setShowNofication(e);
@@ -133,6 +133,4 @@ const App = () => {
       </PageContent>
     </Page>
   );
-};
-
-export { App };
+}

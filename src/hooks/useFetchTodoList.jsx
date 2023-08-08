@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { TodoApi } from "../utils/todoApi/todoApi";
+import TodoApi from "../utils/todoApi/todoApi";
 
-function useFetchTodoList() {
+export default function useFetchTodoList() {
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,5 +23,3 @@ function useFetchTodoList() {
 
   return { setTodos, todos, loading, error };
 }
-
-export { useFetchTodoList };

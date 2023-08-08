@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseURL = "http://localhost:3000/todos";
 
-class TodoApi {
+export default class TodoApi {
   static async fetchTodos() {
     return axios.get(baseURL);
   }
@@ -38,5 +38,3 @@ class TodoApi {
     return axios.delete(`${baseURL}/${todoID}`);
   }
 }
-
-export { TodoApi };

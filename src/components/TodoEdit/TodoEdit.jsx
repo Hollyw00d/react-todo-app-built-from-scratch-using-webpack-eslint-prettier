@@ -1,7 +1,12 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Box, Form, TextInput } from "grommet";
 
-const TodoEdit = ({ toggleEditing, name, id, onInputFieldSubmitReplace }) => {
+export default function TodoEdit({
+  toggleEditing,
+  name,
+  id,
+  onInputFieldSubmitReplace,
+}) {
   const [editStart, setEditStart] = useState(name);
 
   return (
@@ -31,6 +36,4 @@ const TodoEdit = ({ toggleEditing, name, id, onInputFieldSubmitReplace }) => {
       </Box>
     </Form>
   );
-};
-
-export { TodoEdit };
+}

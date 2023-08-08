@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Undo, Checkmark, Edit, Trash } from "grommet-icons";
-import { TodoEdit } from "../TodoEdit/TodoEdit";
+import TodoEdit from "../TodoEdit/TodoEdit";
 import "./Todo.css";
 
-const Todo = ({
+export default function Todo({
   name,
   completed,
   editing,
@@ -12,7 +12,7 @@ const Todo = ({
   toggleEditing,
   deleteTodo,
   onInputFieldSubmitReplace,
-}) => {
+}) {
   const [todoKey, setTodoKey] = useState(1);
 
   return (
@@ -23,18 +23,17 @@ const Todo = ({
             {name}
           </span>
         ) : (
-          <>
-            <TodoEdit
-              toggleEditing={toggleEditing}
-              name={name}
-              id={id}
-              onInputFieldSubmitReplace={onInputFieldSubmitReplace}
-            />
-          </>
+          <TodoEdit
+            toggleEditing={toggleEditing}
+            name={name}
+            id={id}
+            onInputFieldSubmitReplace={onInputFieldSubmitReplace}
+          />
         )}
       </div>
       <div className="btns-container">
         <button
+          type="button"
           disabled={editing ? "disabled" : null}
           onClick={() => toggleCompletion(id)}
         >
@@ -49,6 +48,7 @@ const Todo = ({
           )}
         </button>
         <button
+          type="button"
           disabled={editing ? "disabled" : null}
           onClick={() => {
             toggleEditing(id);
@@ -58,6 +58,7 @@ const Todo = ({
           Edit <Edit color="blue" />
         </button>
         <button
+          type="button"
           disabled={editing ? "disabled" : null}
           onClick={() => deleteTodo(id)}
         >
@@ -66,6 +67,4 @@ const Todo = ({
       </div>
     </li>
   );
-};
-
-export { Todo };
+}

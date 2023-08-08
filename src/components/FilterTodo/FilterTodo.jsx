@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./FilterTodo.css";
 
-const FilterTodo = ({ filterTodos }) => {
+export default function FilterTodo({ filterTodos }) {
   const [filter, setFilter] = useState("all");
 
   const handleFilter = (e) => {
@@ -12,22 +12,20 @@ const FilterTodo = ({ filterTodos }) => {
 
   useEffect(() => {
     filterTodos(filter);
-    //eslint-disable-next-line
+    // eslint-disable-next-line
   }, [filter]);
 
   return (
     <div className="filter-tabs">
-      <button data-filter="0" onClick={(e) => handleFilter(e)}>
+      <button type="button" data-filter="0" onClick={(e) => handleFilter(e)}>
         All
       </button>
-      <button data-filter="1" onClick={(e) => handleFilter(e)}>
+      <button type="button" data-filter="1" onClick={(e) => handleFilter(e)}>
         Active
       </button>
-      <button data-filter="2" onClick={(e) => handleFilter(e)}>
+      <button type="button" data-filter="2" onClick={(e) => handleFilter(e)}>
         Completed
       </button>
     </div>
   );
-};
-
-export { FilterTodo };
+}

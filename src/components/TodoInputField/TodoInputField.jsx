@@ -1,7 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Form, Heading, TextInput, Box } from "grommet";
 
-const TodoInputField = ({ onInputFieldSubmitAdd, addTodo, onInputChange }) => {
+export default function TodoInputField({
+  onInputFieldSubmitAdd,
+  addTodo,
+  onInputChange,
+}) {
   const [newTodo, setNewTodo] = useState("");
 
   return (
@@ -10,9 +14,7 @@ const TodoInputField = ({ onInputFieldSubmitAdd, addTodo, onInputChange }) => {
         onInputFieldSubmitAdd(e, addTodo, newTodo, setNewTodo);
       }}
     >
-      <Heading level="2">
-        <label htmlFor="new-todo">What needs to be done</label>
-      </Heading>
+      <Heading level="2">What needs to be done</Heading>
       <TextInput
         id="new-todo"
         name="new-todo"
@@ -34,6 +36,4 @@ const TodoInputField = ({ onInputFieldSubmitAdd, addTodo, onInputChange }) => {
       </Box>
     </Form>
   );
-};
-
-export { TodoInputField };
+}
