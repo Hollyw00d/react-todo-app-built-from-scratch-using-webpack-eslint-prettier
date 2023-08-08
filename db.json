@@ -47,6 +47,12 @@
       "completed": false,
       "editing": false,
       "id": 14
+    },
+    {
+      "name": "Go home!!!",
+      "completed": true,
+      "editing": false,
+      "id": 15
     }
   ]
 }
