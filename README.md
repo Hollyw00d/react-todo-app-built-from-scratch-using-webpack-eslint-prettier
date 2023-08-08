@@ -1,6 +1,6 @@
-# React Todo App using Vite
+# React Todo App using webpack, ESLint, and Prettier
 
-This app that uses [Vite](https://vitejs.dev/) and functional React components shows a simple todo list and the json-server npm package to create a fake REST API that has full CRUD operations:
+This app that uses [webpack](https://webpack.js.org/), functional React components, ESLint, and Prettier to shows a simple todo list and the json-server npm package to create a fake REST API that has full CRUD operations:
 ![Screenshot of React Todo App](images/react-todo.png)
 
 ## How to Use
@@ -28,3 +28,5 @@ This app that uses [Vite](https://vitejs.dev/) and functional React components s
   `npm run build`
 - Then to open the built **dist/index.html** file that uses the built JavaScript in the terminal do:
   `npm run buildopen`
+- You will now see a screenshot like below:
+  ![Screenshot of React Todo App after running 'npm run build' and then 'npm run buildopen'](images/built-react-app.png)
