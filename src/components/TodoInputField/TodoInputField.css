@@ -1,0 +1,11 @@
+input#new-todo {
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 5px;
+}
+
+button#add-to-do-btn {
+  padding: 5px;
+  margin: 25px 0;
+  width: 100%;
+}

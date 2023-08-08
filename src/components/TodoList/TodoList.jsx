@@ -1,8 +1,8 @@
 import React from "react";
-import { Box } from "grommet";
 import { Alert } from "@mui/material";
 import Todo from "../Todo/Todo";
 import Loader from "../Loader/Loader";
+import "./TodoList.css";
 
 export default function TodoList({
   loading,
@@ -40,8 +40,8 @@ export default function TodoList({
     return <Loader />;
   }
   return (
-    <Box margin={{ top: "medium" }}>
-      <ul>
+    <div>
+      <ul id="todo-list">
         {updatedTodos.map((todo) => (
           <Todo
             key={todo.id}
@@ -54,6 +54,6 @@ export default function TodoList({
           />
         ))}
       </ul>
-    </Box>
+    </div>
   );
 }

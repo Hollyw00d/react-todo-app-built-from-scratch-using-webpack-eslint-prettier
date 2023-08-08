@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Heading, Page, PageContent } from "grommet";
 import { Alert } from "@mui/material";
 import TodoList from "./components/TodoList/TodoList";
 import TodoInputField from "./components/TodoInputField/TodoInputField";
 import FilterTodo from "./components/FilterTodo/FilterTodo";
 import TodoApi from "./utils/todoApi/todoApi";
 import useFetchTodoList from "./hooks/useFetchTodoList";
+import "./App.css";
 
 export default function App() {
   const { setTodos, todos, loading, error } = useFetchTodoList();
@@ -109,9 +109,9 @@ export default function App() {
   };
 
   return (
-    <Page background="background-front" kind="narrow" height="100vh">
-      <PageContent>
-        <Heading>Todo App</Heading>
+    <div>
+      <div>
+        <h1>Todo App</h1>
         {showNotifications ? <Alert severity="warning">Warning!</Alert> : null}
         <TodoInputField
           onInputFieldSubmitAdd={onInputFieldSubmitAdd}
@@ -130,7 +130,7 @@ export default function App() {
           onInputFieldSubmitReplace={onInputFieldSubmitReplace}
           onInputChange={onInputChange}
         />
-      </PageContent>
-    </Page>
+      </div>
+    </div>
   );
 }

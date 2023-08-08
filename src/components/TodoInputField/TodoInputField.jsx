@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Heading, TextInput, Box } from "grommet";
+import "./TodoInputField.css";
 
 export default function TodoInputField({
   onInputFieldSubmitAdd,
@@ -9,23 +9,25 @@ export default function TodoInputField({
   const [newTodo, setNewTodo] = useState("");
 
   return (
-    <Form
+    <form
       onSubmit={(e) => {
         onInputFieldSubmitAdd(e, addTodo, newTodo, setNewTodo);
       }}
     >
-      <Heading level="2">What needs to be done</Heading>
-      <TextInput
+      <h2>What needs to be done</h2>
+      <input
         id="new-todo"
         name="new-todo"
         type="text"
         value={newTodo}
+        placeholder="Add new todo here"
         onChange={(e) => {
           onInputChange(setNewTodo, e);
         }}
       />
-      <Box margin={{ top: "medium" }}>
+      <div>
         <button
+          id="add-to-do-btn"
           disabled={
             newTodo.length === 0 || newTodo.trim() === "" ? "disabled" : null
           }
@@ -33,7 +35,7 @@ export default function TodoInputField({
         >
           Add Todo
         </button>
-      </Box>
-    </Form>
+      </div>
+    </form>
   );
 }
