@@ -1,4 +1,4 @@
-# React Todo App Built from Scratch using Function Components, webpack, ESLint, and Prettier
+# React Todo App Built from Scratch using Functional Components, webpack, ESLint, and Prettier
 
 This React app was built from scratch and uses functional components, [webpack](https://webpack.js.org/), ESLint, and Prettier to shows a simple todo list and the json-server npm package to create a fake REST API that has full CRUD operations:
 ![Screenshot of React Todo App](images/react-todo.png)
